@@ -27,41 +27,40 @@ class Digest:
     deprecation: float
     amortization: float
     eps: float
-    
-    def __init__(self) :
-        pass
+
+    def __init__(self):
+        self.date_of_filing = None
+        self.company_name = None
+        self.quarter = None
+        self.year = None
+
+        self.revenue = None
+        self.net_income = None
+        self.intrest = None
+        self.taxes = None
+        self.deprecation = None
+        self.amortization = None
+        self.eps = None
 
     def ai_approch(self, text: str, labels=None, model=None):
         if model is None or labels is None:
             raise ValueError("Model or Labels not provided.")
+        
+        ai = AI(labels=labels, model=model)
+        dictionary = ai.classify(text)
+        self.date_of_filing = dictionary.get("date of filing")
+        self.company_name = dictionary.get("company name")
+        self.quarter = dictionary.get("quarter")
+        self.year = dictionary.get("year")
+        
+        self.revenue = dictionary.get("revenue")
+        self.net_income = dictionary.get("net income")
+        self.intrest = dictionary.get("intrest")
+        self.taxes = dictionary.get("taxes")
+        self.deprecation = dictionary.get("deprecation")
+        self.amortization = dictionary.get("amortization")
+        self.eps = dictionary.get("eps")
 
-        model = AI(model=model, labels=labels)
-        predictions = model.predict(text)
-
-        for prediction in predictions:
-            label, value = prediction
-            if label == "date of filing":
-                self.date_of_filing = value
-            elif label == "company name":
-                self.company_name = value
-            elif label == "quarter":
-                self.quarter = value
-            elif label == "year":
-                self.year = value
-            elif label == "revenue":
-                self.revenue = float(value)
-            elif label == "net income":
-                self.net_income = float(value)
-            elif label == "intrest":
-                self.intrest = float(value)
-            elif label == "taxes":
-                self.taxes = float(value)
-            elif label == "deprecation":
-                self.deprecation = float(value)
-            elif label == "amortization":
-                self.amortization = float(value)
-            elif label == "eps":
-                self.eps = float(value)
 
     def regex_approch(self, text: str):
 

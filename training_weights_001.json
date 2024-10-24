@@ -1,0 +1,14 @@
+{
+    "labels" : ["revenue", "net income", "intrest", "taxes", "deprecation", "eps"],
+    "train_data" : [
+        [
+            "The company reported a revenue of $1B in the last quarter.",
+            {"entities": [[37, 40, "revenue"]]}
+        ],
+        ["The net income was $5B.", {"entities": [[20, 23, "net income"]]}],
+        ["The company had an intrest of $2B.", {"entities": [[26, 29, "intrest"]]}],
+        ["The taxes paid were $1B.", {"entities": [[19, 22, "taxes"]]}],
+        ["The deprecation was $3B.", {"entities": [[19, 22, "deprecation"]]}],
+        ["The company reported an EPS of $2.", {"entities": [[31, 32, "eps"]]}]
+    ]
+}
